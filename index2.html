@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offre Limitée à 1,99€</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        #countdown {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #4287f5;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        form {
+            flex: 1;
+            text-align: left;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="number"] {
+            width: calc(100% - 10px);
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #4287f5;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4287f5;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0a5bcd;
+        }
+        .phone-img {
+            width: 60px;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+        .offer {
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .iphone-presentation {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .iphone-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .phone-img {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Offre Limitée à 1,99€</h1>
+    <div id="countdown">30:00</div>
+    <div class="container">
+        <form action="#" method="post">
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" name="nom" required><br>
+            
+            <label for="prenom">Prénom:</label>
+            <input type="text" id="prenom" name="prenom" required><br>
+            
+            <label for="adresse">Adresse:</label>
+            <input type="text" id="adresse" name="adresse" required><br>
+            
+            <label for="code_postal">Code Postal:</label>
+            <input type="text" id="code_postal" name="code_postal" required><br>
+            
+            <label for="telephone">Numéro de Téléphone:</label>
+            <input type="tel" id="telephone" name="telephone" pattern="[0-9]{10}" required><br>
+            
+            <label for="email">Adresse Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            
+            <input type="submit" value="Soumettre">
+        </form>
+
+        <img src="telephone.png" alt="Image Téléphone" class="phone-img">
+    </div>
+
+    <p class="offer">Offre Limitée à 1,99€</p>
+
+    <div class="iphone-presentation">
+        <h2>Présentation de l'iPhone 14 Pro Max</h2>
+        <img src="iphone14.png" alt="iPhone 14 Pro Max" class="iphone-image">
+        <p>Un nouveau standard de performance et de design. Découvrez l'iPhone 14 Pro Max avec ses fonctionnalités révolutionnaires.</p>
+    </div>
+
+    <script>
+        // Compte à rebours de 30 minutes (1800 secondes)
+        var countdown = 1800;
+        var timer = setInterval(function() {
+            var minutes = Math.floor(countdown / 60);
+            var seconds = countdown % 60;
+
+            // Formatage pour afficher 2 chiffres pour les minutes et les secondes
+            document.getElementById('countdown').textContent = (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+
+            // Décrémentation du compte à rebours
+            if (--countdown < 0) {
+                clearInterval(timer);
+                alert('Le temps est écoulé.');
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
